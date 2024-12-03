@@ -12,7 +12,7 @@ public class UserController__Autowiring {
    */
   public static UserController apply(RegisteredBean registeredBean, UserController instance) {
     AutowiredFieldValueResolver.forRequiredField("userService").resolveAndSet(registeredBean, instance);
-    AutowiredFieldValueResolver.forRequiredField("billService").resolveAndSet(registeredBean, instance);
+    AutowiredFieldValueResolver.forRequiredField("session").resolveAndSet(registeredBean, instance);
     return instance;
   }
 }

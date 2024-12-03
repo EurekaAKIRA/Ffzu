@@ -12,7 +12,7 @@ public class AdminService__Autowiring {
    */
   public static AdminService apply(RegisteredBean registeredBean, AdminService instance) {
     AutowiredFieldValueResolver.forRequiredField("adminMapper").resolveAndSet(registeredBean, instance);
-    AutowiredFieldValueResolver.forRequiredField("billMapper").resolveAndSet(registeredBean, instance);
+    AutowiredFieldValueResolver.forRequiredField("billService").resolveAndSet(registeredBean, instance);
     return instance;
   }
 }

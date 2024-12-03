@@ -19,8 +19,8 @@ public class HttpSecurityConfiguration__Autowiring {
       HttpSecurityConfiguration instance) {
     AutowiredMethodArgumentsResolver.forRequiredMethod("setApplicationContext", ApplicationContext.class).resolve(registeredBean, args -> instance.setApplicationContext(args.get(0)));
     AutowiredMethodArgumentsResolver.forMethod("setContentNegotiationStrategy", ContentNegotiationStrategy.class).resolve(registeredBean, args -> instance.setContentNegotiationStrategy(args.get(0)));
-    AutowiredMethodArgumentsResolver.forMethod("setSecurityContextHolderStrategy", SecurityContextHolderStrategy.class).resolve(registeredBean, args -> instance.setSecurityContextHolderStrategy(args.get(0)));
     AutowiredMethodArgumentsResolver.forRequiredMethod("setAuthenticationConfiguration", AuthenticationConfiguration.class).resolve(registeredBean, args -> instance.setAuthenticationConfiguration(args.get(0)));
+    AutowiredMethodArgumentsResolver.forMethod("setSecurityContextHolderStrategy", SecurityContextHolderStrategy.class).resolve(registeredBean, args -> instance.setSecurityContextHolderStrategy(args.get(0)));
     AutowiredMethodArgumentsResolver.forRequiredMethod("setObjectPostProcessor", ObjectPostProcessor.class).resolve(registeredBean, args -> instance.setObjectPostProcessor(args.get(0)));
     return instance;
   }

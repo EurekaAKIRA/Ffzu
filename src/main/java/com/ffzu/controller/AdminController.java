@@ -5,6 +5,7 @@ import com.ffzu.pojo.Bill;
 import com.ffzu.pojo.Result;
 import com.ffzu.request.UserRangeAndDateRange;
 import com.ffzu.service.AdminService;
+import com.ffzu.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,8 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private BillService billService;
 
     /**
      * 管理员登录接口
@@ -104,4 +107,10 @@ public class AdminController {
         adminService.updateBill(updatedBill);
         return Result.success("账单修改成功");
     }
+
+//    @GetMapping("/bill")
+//    public Result<Bill>getBill(@RequestParam String billNumber)
+//    {
+//        return Result.success(billService.getBillByBillNumber(billNumber));
+//    }
 }

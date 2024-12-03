@@ -1,6 +1,5 @@
 com\ffzu\pojo\Admin.class
 com\ffzu\service\AdminService.class
-com\ffzu\controller\BillController.class
 com\ffzu\exception\ErrorResponse.class
 com\ffzu\config\SecurityConfig.class
 com\ffzu\mapper\BillMapper.class
@@ -15,4 +14,5 @@ com\ffzu\response\Base.class
 com\ffzu\controller\UserController.class
 com\ffzu\pojo\Result.class
 com\ffzu\pojo\User.class
+com\ffzu\request\UserRangeAndDateRange.class
 com\ffzu\pojo\Bill.class

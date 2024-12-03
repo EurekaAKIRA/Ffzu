@@ -18,9 +18,9 @@ public class WebSecurityConfiguration__Autowiring {
       WebSecurityConfiguration instance) {
     AutowiredFieldValueResolver.forField("objectObjectPostProcessor").resolveAndSet(registeredBean, instance);
     AutowiredFieldValueResolver.forField("httpSecurity").resolveAndSet(registeredBean, instance);
+    AutowiredMethodArgumentsResolver.forMethod("setFilterChains", List.class).resolve(registeredBean, args -> instance.setFilterChains(args.get(0)));
     AutowiredMethodArgumentsResolver.forMethod("setFilterChainProxySecurityConfigurer", ObjectPostProcessor.class, ConfigurableListableBeanFactory.class).resolve(registeredBean, args -> instance.setFilterChainProxySecurityConfigurer(args.get(0), args.get(1)));
     AutowiredMethodArgumentsResolver.forMethod("setWebSecurityCustomizers", List.class).resolve(registeredBean, args -> instance.setWebSecurityCustomizers(args.get(0)));
-    AutowiredMethodArgumentsResolver.forMethod("setFilterChains", List.class).resolve(registeredBean, args -> instance.setFilterChains(args.get(0)));
     return instance;
   }
 }

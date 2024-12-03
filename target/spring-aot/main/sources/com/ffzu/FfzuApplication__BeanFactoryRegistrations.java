@@ -2,7 +2,6 @@ package com.ffzu;
 
 import com.ffzu.config.SecurityConfig__BeanDefinitions;
 import com.ffzu.controller.AdminController__BeanDefinitions;
-import com.ffzu.controller.BillController__BeanDefinitions;
 import com.ffzu.controller.UserController__BeanDefinitions;
 import com.ffzu.exception.GlobalExceptionHandler__BeanDefinitions;
 import com.ffzu.mapper.AdminMapper;
@@ -167,7 +166,6 @@ public class FfzuApplication__BeanFactoryRegistrations {
     beanFactory.registerBeanDefinition("ffzuApplication", FfzuApplication__BeanDefinitions.getFfzuApplicationBeanDefinition());
     beanFactory.registerBeanDefinition("securityConfig", SecurityConfig__BeanDefinitions.getSecurityConfigBeanDefinition());
     beanFactory.registerBeanDefinition("adminController", AdminController__BeanDefinitions.getAdminControllerBeanDefinition());
-    beanFactory.registerBeanDefinition("billController", BillController__BeanDefinitions.getBillControllerBeanDefinition());
     beanFactory.registerBeanDefinition("userController", UserController__BeanDefinitions.getUserControllerBeanDefinition());
     beanFactory.registerBeanDefinition("globalExceptionHandler", GlobalExceptionHandler__BeanDefinitions.getGlobalExceptionHandlerBeanDefinition());
     beanFactory.registerBeanDefinition("adminService", AdminService__BeanDefinitions.getAdminServiceBeanDefinition());
