@@ -3,6 +3,7 @@ package com.ffzu.controller;
 import com.ffzu.pojo.Admin;
 import com.ffzu.pojo.Bill;
 import com.ffzu.pojo.Result;
+import com.ffzu.request.UserRangeAndDateRange;
 import com.ffzu.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,23 +42,32 @@ public class AdminController {
     }
 
     /**
-     * 根据用户范围和日期范围查询账单
+     * 根据用户范围和日期范围查询账单并返回符合条件的账单和总水电费接口
      *
-     * @param requestData 包含 userIds, startYear, startMonth, endYear, endMonth
-     * @return 返回符合条件的账单
+     * @param request 包含用户ID列表和时间范围的请求对象
+     *                - userIds: 用户ID列表
+     *                - startYear: 起始年份
+     *                - startMonth: 起始月份
+     *                - endYear: 结束年份
+     *                - endMonth: 结束月份
+     * @return Result<Map<String, Object>> 返回符合条件的账单和总金额：
+     *         - bills: 符合条件的账单列表
+     *         - totalAmount: 符合条件的账单总金额
      */
-    @PostMapping("/bills/range")
-    public Result<Map<String, Object>> getBillsByUserRangeAndDateRange(@RequestBody Map<String, Object> requestData) {
-        @SuppressWarnings("unchecked")
-        List<String> userIds = (List<String>) requestData.get("userIds");
-        int startYear = (int) requestData.get("startYear");
-        int startMonth = (int) requestData.get("startMonth");
-        int endYear = (int) requestData.get("endYear");
-        int endMonth = (int) requestData.get("endMonth");
+    @GetMapping("/bills/range")
+    public Result<Map<String, Object>> getBillsByUserRangeAndDateRange(@ModelAttribute UserRangeAndDateRange request) {
+        // 参数校验
+        List<String> userIds = request.getUserIds();
+        int startYear = request.getStartYear();
+        int startMonth = request.getStartMonth();
+        int endYear = request.getEndYear();
+        int endMonth = request.getEndMonth();
 
+        // 调用 Service 方法获取账单和总和
         Map<String, Object> result = adminService.getBillsByUserRangeAndDateRange(userIds, startYear, startMonth, endYear, endMonth);
         return Result.success(result);
     }
+
 
     /**
      * 删除账单接口

@@ -82,8 +82,8 @@ public class AdminService {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    // 6. 获取指定用户范围内指定时间范围的账单并统计水电费总和
     public Map<String, Object> getBillsByUserRangeAndDateRange(List<String> userIds, int startYear, int startMonth, int endYear, int endMonth) {
+        // 参数校验
         if (userIds == null || userIds.isEmpty()) {
             throw new IllegalArgumentException("用户ID列表不能为空");
         }
@@ -91,17 +91,20 @@ public class AdminService {
             throw new IllegalArgumentException("时间范围参数非法");
         }
 
+        // 查询所有符合条件的账单
         List<Bill> allBills = userIds.stream()
                 .flatMap(userId -> billMapper.findBillsByDateRange(userId, startYear, startMonth, endYear, endMonth).stream())
                 .collect(Collectors.toList());
 
+        // 计算总费用
         BigDecimal totalAmount = allBills.stream()
                 .map(Bill::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
+        // 构建返回结果
         Map<String, Object> result = new HashMap<>();
-        result.put("bills", allBills);
-        result.put("totalAmount", totalAmount);
+        result.put("bills", allBills);       // 符合条件的账单列表
+        result.put("totalAmount", totalAmount); // 总费用
         return result;
     }
 
